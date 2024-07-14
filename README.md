@@ -16,4 +16,4 @@ Users should be able to:
 
 ## Preview
 
-The app is currently deploy on ![Vercel](https://mortgage-calculator-8ija121ys-randomstuff222s-projects.vercel.app)
+The app is currently deploy on [Vercel](https://mortgage-calculator-8ija121ys-randomstuff222s-projects.vercel.app)

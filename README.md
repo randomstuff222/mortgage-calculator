@@ -13,3 +13,7 @@ Users should be able to:
 - View the optimal layout for the interface depending on their device's screen
   size
 - See hover and focus states for all interactive elements on the page
+
+## Preview
+
+The app is currently deploy on ![Vercel](https://mortgage-calculator-8ija121ys-randomstuff222s-projects.vercel.app)

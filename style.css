@@ -1,0 +1,579 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+:root {
+  --Lime: #07c1d5;
+  --LimeHover: #2de4f8;
+  --Red: hsl(4, 69%, 50%);
+
+  --White: hsl(0, 0%, 100%);
+  --Slate100: hsl(202, 86%, 94%);
+  --Slate300: hsl(203, 41%, 72%);
+  --Slate500: hsl(200, 26%, 54%);
+  --Slate700: hsl(200, 24%, 40%);
+  --Slate900: hsl(202, 55%, 16%);
+}
+
+body {
+  background-color: black;
+}
+
+.container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  background-color: var(--Slate100);
+  border-radius: 20px;
+  width: 63em;
+}
+
+.details-container {
+  width: 50%;
+  padding: 2.5rem;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.2rem;
+}
+
+h1 {
+  color: var(--Slate900);
+}
+
+.clear-button {
+  text-decoration: underline;
+  font-size: 0.95em;
+  color: var(--Slate900);
+  letter-spacing: 1px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.amount {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+
+.amount > label,
+.term-container > label,
+.interest-container > label,
+.type-container > label {
+  color: var(--Slate900);
+  font-size: 0.95em;
+  font-weight: 500;
+}
+
+#mortgage-amount-input,
+#mortgage-term-input,
+#interest-rate-input {
+  width: 100%;
+  height: 45px;
+  border-radius: 5px;
+  border: 1px solid var(--Slate900);
+  padding: 10px 10px 10px 55px;
+  font-weight: 700;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+#currency-button:hover,
+#mortgage-amount-input:hover,
+#mortgage-term-input:hover,
+#interest-rate-input:hover {
+  border-color: var(--Lime);
+}
+
+.symbol-background {
+  background-color: var(--Slate100);
+  position: absolute;
+  height: 43px;
+  top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: var(--Slate700);
+}
+
+.pound-symbol {
+  width: 50px;
+  border-radius: 5px 0 0 5px;
+  left: 1px;
+  padding: 5px;
+}
+
+.select-option {
+  width: 13%;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.year-symbol {
+  right: 1px;
+  width: 75px;
+  border-radius: 0 5px 5px 0px;
+}
+
+.percent-symbol {
+  right: 1px;
+  border-radius: 0 5px 5px 0px;
+  width: 40px;
+}
+
+.term-interest-container {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-top: 2.2rem;
+}
+
+.term-container,
+.interest-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+
+#mortgage-term-input,
+#interest-rate-input {
+  padding: 15px;
+}
+
+#currency-button:hover + .symbol-background,
+#mortgage-amount-input:hover + .symbol-background,
+#mortgage-term-input:hover + .symbol-background,
+#interest-rate-input:hover + .symbol-background {
+  background-color: var(--Lime);
+}
+
+#currency-button:focus-visible + .symbol-background,
+#mortgage-amount-input:focus-visible + .symbol-background,
+#mortgage-term-input:focus-visible + .symbol-background,
+#interest-rate-input:focus-visible + .symbol-background {
+  background-color: var(--Lime);
+}
+
+#currency-button:focus-visible,
+#mortgage-amount-input:focus-visible,
+#mortgage-term-input:focus-visible,
+#interest-rate-input:focus-visible {
+  outline-color: var(--Lime);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.type-container {
+  margin-top: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px;
+  border: 1px solid var(--Slate900);
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: 700 !important;
+  color: var(--Slate900) !important;
+}
+
+.option:hover {
+  background-color: hsla(61, 70%, 52%, 0.213);
+  border-color: var(--Lime);
+}
+
+#interest-only-option,
+#repayment-option {
+  width: 20px;
+  height: 20px;
+}
+
+input[type='radio'] {
+  accent-color: var(--Lime);
+}
+.buttons-container {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+}
+
+.back-button {
+  min-width: 100px;
+  cursor: pointer;
+  background-color: var(--Lime);
+  border: none;
+  border-radius: 50px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  cursor: pointer;
+  font-weight: 700;
+  /* font-size: 1em; */
+  color: var(--Slate900);
+}
+
+.interest-only-example-button,
+.calculate-button {
+  margin-top: 2.2rem;
+  width: 60%;
+  /* width: 300px; */
+  padding: 15px;
+  border-radius: 50px;
+  border: none;
+  background-color: var(--Lime);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  cursor: pointer;
+}
+
+.calculate-button:hover,
+.help-button:hover {
+  background-color: var(--LimeHover);
+}
+
+#help-menu {
+  position: relative;
+}
+
+#help-options {
+  position: absolute;
+  width: 60%;
+  right: 20%;
+}
+
+#container-example {
+  min-height: 75%;
+  min-width: 50%;
+  background-color: var(--Slate700);
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* position the div in center */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10%;
+  z-index: 1;
+
+  flex-direction: column;
+  gap: 4px;
+  max-width: max-content;
+  transition: all 0.5s ease; /* Smooth transition for all changes */
+  box-shadow: 10px 10px;
+}
+
+.help-explanation {
+  /* font-weight: 700; */
+  color: black;
+}
+
+.equation {
+  font-weight: 800;
+}
+
+.help-explanation > h2 {
+  color: var(--White);
+}
+
+#child-example {
+  min-width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+#help-content-container {
+  /* position: absolute; */
+  margin: 20px;
+  top: 5%;
+  transition: all 0.5s ease; /* Smooth transition for all changes */
+}
+
+#explanation-buttons {
+  /* position: absolute; */
+  bottom: 5%;
+  left: 10%;
+  display: inline-flex;
+  width: 80%;
+  gap: 15px;
+  margin: 10px;
+}
+
+#explanation-buttons > button {
+  font-weight: 700;
+}
+
+#help-content-container ul {
+  padding: 10px;
+}
+
+.help-button {
+  margin-top: 2.2rem;
+  /* width: 150px; */
+  width: 40%;
+  padding: 15px;
+  border-radius: 50px;
+  border: none;
+  background-color: var(--Lime);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  cursor: pointer;
+}
+
+.help-button > span,
+.calculate-button > span {
+  font-size: 1.2em;
+  font-weight: 700;
+  color: var(--Slate900);
+}
+
+.results-container {
+  width: 50%;
+  background-color: var(--Slate900);
+  border-radius: 0px 20px 20px 80px;
+}
+
+.results-header {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.results-header > h2 {
+  color: var(--White);
+  margin: 15px;
+}
+
+.desc {
+  text-align: center;
+  padding-inline: 25px;
+  color: var(--Slate500);
+}
+
+.results-details {
+  display: none;
+  position: absolute;
+  top: 0;
+  padding: 2.5rem;
+}
+
+.results-details > h2 {
+  margin-bottom: 1rem;
+  color: var(--White);
+  font-size: 1.45em;
+}
+
+.results-details > p {
+  color: var(--Slate500);
+}
+
+.results-summary {
+  margin-top: 2rem;
+  background-color: #0e2431;
+  padding: 2rem;
+  border-radius: 10px;
+  border-top: 5px solid var(--Lime);
+}
+
+.results-summary > p {
+  color: var(--Slate500);
+}
+
+.monthly-repayment {
+  font-size: 3.2em;
+  margin: 25px 0;
+  color: var(--Lime);
+}
+
+hr {
+  border: 1px solid var(--Slate700);
+  margin-bottom: 2rem;
+}
+
+.total-repayment {
+  font-size: 1.8em;
+  margin: 10px 0;
+  color: var(--White);
+}
+
+.error-msg {
+  color: var(--Red);
+  font-weight: 600;
+  font-size: 0.8em;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.error-background {
+  background-color: var(--Red);
+  color: var(--White);
+}
+
+.error-border {
+  border-color: var(--Red) !important;
+}
+
+.select {
+  background-color: hsla(61, 70%, 52%, 0.213);
+  border-color: var(--Lime) !important;
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    width: 55em;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  section {
+    padding: 1rem 0;
+  }
+  .container {
+    position: static;
+    margin: auto;
+    transform: translate(0, 0);
+    height: 100%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #container-example {
+    min-height: 25%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0px 0px;
+  }
+
+  #child-example {
+    position: absolute;
+  }
+
+  #help-content-container {
+    margin: 10px;
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  #help-content-container h2 {
+    padding: 10px;
+  }
+
+  #explanation-buttons {
+    padding: 10px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  #explanation-buttons > .back-button {
+    padding: 5px;
+    width: 0px;
+  }
+
+  .details-container {
+    width: 100%;
+  }
+
+  .term-interest-container {
+    width: 100%;
+  }
+
+  .term-container,
+  .interest-container {
+    width: 100%;
+  }
+
+  .results-container {
+    width: 100%;
+    background-color: var(--Slate900);
+    border-radius: 0px 0px 20px 20px;
+    padding: 2rem;
+  }
+
+  .results-details {
+    position: static;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  section {
+    padding: 0rem 0;
+  }
+  h1 {
+    font-size: 1.4em;
+  }
+  .container {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .header-container {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .details-container {
+    padding: 1.5rem;
+  }
+  .term-interest-container {
+    flex-direction: column;
+  }
+  .results-container {
+    border-radius: 0px;
+  }
+
+  .desc {
+    padding-inline: 0px;
+  }
+  .calculate-button {
+    margin-inline: auto;
+    width: 80%;
+  }
+}

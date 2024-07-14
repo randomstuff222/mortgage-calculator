@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <!-- displays site properly based on user's device -->
+
+ <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
+
+ <title>Mortgage repayment calculator</title>
+ <link rel="stylesheet" href="style.css" />
+ <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+ <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+ <main>
+  <section>
+   <div class="container">
+    <div id="container-example">
+     <div id="child-example">
+      <button id="repayment-help-display" class="back-button">
+       <span>Repayment</span>
+      </button>
+      <button id="interest-only-help-display" class="back-button">
+       <span>Interest Only</span>
+      </button>
+     </div>
+     <div id="help-content-container">
+      <div id="repayment-explanation" class="help-explanation">
+       <div id="repayment-text" class="help-explanation">
+        <h2>Repayment</h2>
+        <p>A repayment mortgage includes both interest and principal </p>
+        <p>payments. Over time, the outstanding balance decreases</p>
+        until
+        the loan is fully paid off.</p>
+        <h2>Formula for Monthly Payment</h2>
+        <p class="equation">\( M = P \frac{r(1+r)^n}{(1+r)^n - 1} \)</p>
+        <p>
+         where:
+        <ul>
+         <li>M = Monthly payment</li>
+         <li>P = Principal loan amount</li>
+         <li>r = Monthly interest rate (annual rate divided by 12)</li>
+         <li>n = Number of payments (loan term in years multiplied by 12)</li>
+        </ul>
+       </div>
+       <div id="repayment-example" class="help-explanation">
+        <h2>Example Calculation:</h2>
+        <ul>
+         <li>Principal (P): $200,000</li>
+         <li>Annual interest rate: 5% (0.05)</li>
+         <li>Mortgage term: 30 years</li>
+        </ul>
+        <h2>Convert annual interest rate to monthly:</h2>
+        <p class="equation">
+         \( r = \frac{0.05}{12} = 0.004167 \)
+        </p>
+
+        <h2>Convert mortgage term to months:</h2>
+        <p class="equation">
+         \( n = 30 \times 12 = 360 \)
+        </p>
+
+        <h2>Plug these values into the formula:</h2>
+        <p class="equation">
+         \( M = 200{,}000 \frac{0.004167(1 + 0.004167)^{360}}{(1 + 0.004167)^{360} - 1} \)
+        </p>
+
+        <h2>Calculate:</h2>
+        <p class="equation">
+         \( M \approx 200{,}000 \frac{0.004167 \times 4.46774}{3.46774} \)
+        </p>
+        <p class="equation">
+         \( M \approx 200{,}000 \times 0.001208 = \$1{,}073.64 \)
+        </p>
+       </div>
+
+      </div>
+      <div id="interest-only-explanation" class="help-explanation">
+       <div id="interest-only-text" class="help-explanation">
+        <h2>Interest Only</h2>
+        <p>An interest-only mortgage involves paying only </p>
+        <p>the interest on the principal balance for a set period. </p>
+        <p>The principal remains unchanged during this period.</p>
+        <h2>Formula for Monthly Payment</h2>
+        <i class="equation">\( M = P \times r \)</i>
+        <p>where:</p>
+        <ul>
+         <li>M = Monthly payment</li>
+         <li>P = Principal loan amount</li>
+         <li>r = Monthly interest rate (annual rate divided by 12)</li>
+        </ul>
+       </div>
+       <div id="interest-only-example" class="help-explanation">
+        <h2>Example Calculation:</h2>
+        <p>
+        <ul>
+         <li>Principal (P): $200,000</li>
+         <li>Annual interest rate: 5% (0.05)</li>
+        </ul>
+        Convert annual interest rate to monthly:
+        <p class="equation">\( r = \frac{0.05}{12} = 0.004167 \)</p>
+        <p>Plug these values into the formula:</p>
+
+        <p>M = 200,000 \times 0.004167 = $833.33</p>
+        </p>
+       </div>
+      </div>
+     </div>
+     <div id="explanation-buttons">
+      <button id="repayment-example-button" class="back-button" value="1">
+       <span>Example Calculation</span>
+      </button>
+      <button class="back-button return-button">
+       <span>Back</span>
+      </button>
+     </div>
+    </div>
+    <div class="details-container">
+     <div class="header-container">
+      <h1>Mortgage Calculator</h1>
+      <button class="clear-button">Clear all</button>
+     </div>
+     <form action="">
+      <div class="amount">
+       <label for="mortgage-amount-input">Mortgage Amount</label>
+       <input type="number" id="mortgage-amount-input" name="mortgage-amount-input" />
+       <select id="currency-button" class="dropdown-content pound-symbol symbol-background select-option" name="cars"
+        id="cars">
+        <option value="GBP">&pound;</option>
+        <option value="USD">&dollar;</option>
+        <option value="JPY">&yen;</option>
+        <option value="INR">&#8377;</option>
+        <option value="EUR">&euro;</option>
+        <option value="CNY">&#20803;</option>
+        <option value="MXN">&#8369;</option>
+       </select>
+       <p class="error-msg"></p>
+      </div>
+
+      <div class="term-interest-container">
+       <div class="term-container">
+        <label for="Mortgage-term">Mortgage Term</label>
+        <input type="number" id="mortgage-term-input" name="mortgage-term-input" />
+        <div class="year-symbol symbol-background">year</div>
+        <p class="error-msg"></p>
+       </div>
+
+       <div class="interest-container">
+        <label for="interest-rate">Interest Rate</label>
+        <input type="number" id="interest-rate-input" name="interest-rate" />
+        <div class="percent-symbol symbol-background">%</div>
+        <p class="error-msg"></p>
+       </div>
+      </div>
+
+      <div class="type-container">
+       <label for="Mortgage-type">Mortgage Type</label>
+       <label for="repayment-option" class="option repayment-label">
+        <input type="radio" name="Mortgagetype" id="repayment-option" value="repayment" />Repayment
+       </label>
+       <label for="interest-only-option" class="option interestonly-label">
+        <input type="radio" id="interest-only-option" value="interestonly" name="Mortgagetype" />Interest Only</label>
+       <p class="error-msg"></p>
+      </div>
+      <div class="buttons-container">
+       <button class="calculate-button">
+        <img src="assets/images/icon-calculator.svg" alt="" />
+        <span>Calculate Repayments</span>
+       </button>
+       <button id="how-it-works" class="help-button">
+        <span>How it works</span>
+       </button>
+      </div>
+     </form>
+    </div>
+
+    <div class="results-container">
+     <div class="results-header">
+      <img src="assets/images/loading_data.svg" alt="" />
+      <h2>Results shown here</h2>
+      <p class="desc">
+       Complete the form and click “calculate repayments” to see what
+       your monthly-repaymentrepayments would be.
+      </p>
+     </div>
+
+     <div class="results-details">
+      <h2>Your Results</h2>
+      <p>
+       Your results are shown below based on the information you
+       provided. To adjust the results, edit the form and click
+       “calculate repayments” again.
+      </p>
+
+      <div class="results-summary">
+       <p class="monthly-repayment-label">Your monthly repayment</p>
+       <h3 class="monthly-repayment label-amount"></h3>
+       <hr />
+       <p class="total-repayment-label">
+        total you'll repay over the term
+       </p>
+       <h3 class="total-repayment label-amount"></h3>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+ </main>
+ <script src="app.js"></script>
+</body>
+
+</html>

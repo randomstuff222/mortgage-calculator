@@ -1,6 +1,6 @@
 # Mortgage repayment calculator
 
-![Design preview for the Mortgage repayment calculator coding challenge](./images/preview.jpg)
+![Design preview for the Mortgage repayment calculator coding challenge](./assets/images/preview.jpg)
 
 ## The App
 

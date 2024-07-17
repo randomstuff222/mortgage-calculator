@@ -43,6 +43,8 @@ let helpOptionActive = 0;
 
 const helpButton = document.getElementById('how-it-works');
 const helpMenu = document.getElementById('container-example');
+const bgBlur = document.getElementById('background-blur');
+bgBlur.style.display = 'none';
 helpMenu.style.display = 'none';
 
 repaymentHelpBtn.addEventListener('click', function () {
@@ -91,10 +93,13 @@ backButtons.forEach(element => {
 // // when clicking repayment button to display the explanation from the two options
 helpButton.addEventListener('click', function (event) {
   event.preventDefault();
+  // add a gray over everything in the background
   if (helpMenu.style.display === 'none') {
+    bgBlur.style.display = 'flex';
     helpMenu.style.display = 'flex';
   } else {
     helpMenu.style.display = 'none';
+    bgBlur.style.display = 'none';
   }
 });
 
@@ -109,14 +114,19 @@ const closingAllTabs = () => {
 };
 
 document.addEventListener('click', function (event) {
-  event.preventDefault();
-  // clicking the how it works button shouldn't trigger it
-  if (!helpButton.contains(event.target) && !helpMenu.hidden) {
-    //if the user is clicking outside
-    if (!helpMenu.contains(event.target)) {
-      closingAllTabs();
-      helpMenu.style.display = 'none';
-      return;
+  if (helpMenu.style.display === 'flex') {
+    event.preventDefault();
+    //issue in which clicking outside will block the radial of Mortgage Type
+
+    // clicking the how it works button shouldn't trigger it
+    if (!helpButton.contains(event.target)) {
+      //if the user is clicking outside
+      if (!helpMenu.contains(event.target)) {
+        //closingAllTabs();
+        helpMenu.style.display = 'none';
+        bgBlur.style.display = 'none';
+        return;
+      }
     }
   }
 });
